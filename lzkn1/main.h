@@ -21,7 +21,7 @@
 
 #endif
 
-ADDAPI int ADDCALL decompress(unsigned char *input, unsigned char *output);
+ADDAPI int ADDCALL decompress(unsigned char *input, unsigned char *output, int* compressed_size);
 ADDAPI int ADDCALL compress(unsigned char *input, unsigned char *output, int size);
 ADDAPI int ADDCALL compressed_size(unsigned char *input);
 

@@ -41,7 +41,7 @@ int compare_win(const unsigned char *buffer, int size, int readpos, int *offset)
 	return (longest == 1) ? 0 : longest;
 }
 
-int ADDCALL decompress(unsigned char *input, unsigned char *output) {
+int ADDCALL decompress(unsigned char *input, unsigned char *output, int* compressed_size) {
 	int BITS, READPOS, WRITEPOS, BIT, COMMAND, SEQ, REPS, FROM, MASK, i;
 
 	READPOS = 2;
@@ -104,6 +104,10 @@ int ADDCALL decompress(unsigned char *input, unsigned char *output) {
 				break;
 			}
 		}
+	}
+	if (compressed_size)
+	{
+		*compressed_size = READPOS;
 	}
 
 	return (WRITEPOS & 1) ? WRITEPOS + 1 : WRITEPOS;
